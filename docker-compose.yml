@@ -1,0 +1,14 @@
+version: '2.0'
+services:
+    sparqlmap:
+        build: .
+        environment:
+            ACTION:           "dump"
+            DATASOURCE_TYPE:  "CSV"
+            MAPPING_FILE:     "mapping.ttl"
+            INPUT_FILE:       "input.csv"
+            OUTPUT_FILE:      "output.ttl"
+            CSV_SEPARATOR:    ","
+        volumes:
+            - "./data:/sparqlmap-data"
+            - "./log:/sparqlmap-log"
