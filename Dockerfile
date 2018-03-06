@@ -29,6 +29,9 @@ RUN cp \
 # finalize sparqlmap
 RUN mv /tmp/$SPARQLMAP_FILE /sparqlmap
 
+# install rapper to reduce file size later on
+RUN apt-get update && apt-get install -y raptor-utils
+
 # script to call sparqlmap
 COPY ./sparqlmap.sh /sparqlmap.sh
 RUN chmod +x /sparqlmap.sh

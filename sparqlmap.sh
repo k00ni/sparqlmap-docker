@@ -31,3 +31,12 @@ echo
 
 # root owns this file, so we have to make it accessible to the outside world
 chmod 0777 /sparqlmap-data/$OUTPUT_FILE
+
+echo
+echo "Reduce file size of " $OUTPUT_FILE
+echo
+# as long as https://github.com/tomatophantastico/sparqlmap/issues/34 is open
+# we reduce generated file using rapper (size reduced by about 80%)
+rapper -i turtle -o turtle /sparqlmap-data/$OUTPUT_FILE > /tmp/$OUTPUT_FILE
+rm /sparqlmap-data/$OUTPUT_FILE
+mv /tmp/$OUTPUT_FILE /sparqlmap-data/$OUTPUT_FILE
